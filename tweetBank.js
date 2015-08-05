@@ -1,6 +1,6 @@
 var _ = require('underscore');
 
-var data = [{name: "Timmy", text: "hi there", tweetId:0}];
+var data = [{name: "Timmy", text: "hi there", tweetId:'0'}];
 
 var addCounter = function (name, text) {
   counter = 0;

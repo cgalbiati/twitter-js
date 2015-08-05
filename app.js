@@ -3,6 +3,9 @@ var express = require('express');
 var app = express();
 var swig = require('swig');
 var routes = require('./routes/routes');
+var socketio = require('socket.io');
+
+
 //var fs = require('fs');
 //var greeter = require('./greeter');
 
@@ -17,10 +20,7 @@ swig.setDefaults({ cache: false });
 
 
 
-app.use(routes);
-
-
-
+app.use(routes(io));
 
 
 
@@ -32,3 +32,4 @@ var server = app.listen(3000, function(req, res){
  	var port = server.address().port;
   	console.log('Example app listening at http://%s:%s', host, port);
 });
+var io = socketio.listen(server);
