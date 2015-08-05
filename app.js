@@ -1,7 +1,10 @@
 //require variables
-express = require('express');
-app = express();
-swig = require('swig');
+var express = require('express');
+var app = express();
+var swig = require('swig');
+var routes = require('./routes');
+//var fs = require('fs');
+//var greeter = require('./greeter');
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -14,27 +17,7 @@ swig.setDefaults({ cache: false });
 
 
 
-//router functions
-
-//routs everything
-app.use(function(req, res, next){
-	console.log("path: " + req.path, "verb: " + req.method);
-	next();
-});
-
-//routes home page requests
-app.get('/', function(req, res){
-	var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-	res.render( 'index', {title: 'Hall of Fame', people: people} );
-	//res.send('welcome');
-});
-
-
-
-
-app.get('/test', function(req, res){
-	res.send('test page');
-});
+app.use(routes);
 
 
 
