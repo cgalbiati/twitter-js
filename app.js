@@ -4,7 +4,7 @@ var app = express();
 var swig = require('swig');
 var routes = require('./routes/routes');
 var socketio = require('socket.io');
-
+var io = socketio.listen(server);
 
 //var fs = require('fs');
 //var greeter = require('./greeter');
@@ -32,4 +32,3 @@ var server = app.listen(3000, function(req, res){
  	var port = server.address().port;
   	console.log('Example app listening at http://%s:%s', host, port);
 });
-var io = socketio.listen(server);

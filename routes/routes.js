@@ -37,16 +37,17 @@ module.exports = function (io) {
 	  var name = req.body.name;
 	  var text = req.body.text;
 	  tweetBank.add(name, text);
-	  // io.sockets.emit('new_tweet', { name:name, text:text });
+	  io.sockets.emit('new_tweet', { name:name, text:text });
+	  console.log({ name:name, text:text })
 	  res.redirect('/');
 	});
 
-	router.post('/submit', urlencodedParser, function(req, res) {
-	  var name = req.body.name;
-	  var text = req.body.text;
-	  tweetBank.add(name, text);
-	  res.redirect('/');
-	});
+	// router.post('/submit', urlencodedParser, function(req, res) {
+	//   var name = req.body.name;
+	//   var text = req.body.text;
+	//   tweetBank.add(name, text);
+	//   res.redirect('/');
+	// });
 
 	//files
 	router.use(function(req, res, next){
