@@ -61,7 +61,7 @@ module.exports = function (io) {
 
 	//error
 	router.use(function(error, req, res, next){
-		res.send("error");
+		res.send(error.message);
 	});
 
 
