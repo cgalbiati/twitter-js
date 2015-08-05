@@ -1,10 +1,15 @@
 var _ = require('underscore');
 
-var data = [{name: "Timmy", text: "hi there"}];
+var data = [{name: "Timmy", text: "hi there", tweetId:0}];
 
-var add = function (name, text) {
-  data.push({ name: name, text: text });
-};
+var addCounter = function (name, text) {
+  counter = 0;
+  return function (name, text) {
+    data.push({ name: name, text: text, tweetId: String(++counter)})
+  }
+}
+var add = new addCounter;
+  
 
 var list = function () {
   return _.clone(data);
@@ -35,7 +40,7 @@ for(var i=0; i<10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-console.log(module.exports.find({text: "hi there"}));
+// console.log(module.exports.find({text: "hi there"}));
 
 
 
