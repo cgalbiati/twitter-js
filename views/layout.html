@@ -92,17 +92,11 @@
   // When 'new_tweet' events are fired, do something with the packaged tweet
   socket.on('new_tweet', function (tweet) { 
     console.log(tweet);
-    // // some logic to add the new tweet to the DOM…
-    // var childstring = "<div class='row'><div class='col-md-1'><img src='https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg'><br></div><div class='tweetbox'><a href='/users/{{tweet.name}}''>{{tweet.name}}</a><br><a href='/users/{{tweet.name}}/tweets/{{tweet.tweetId}}''>{{tweet.text}}</a><br>"
-    // var parser = new DOMParser();
-    // var child = parser.parseFromString(childstring, 'text/xml');
-    // console.log('child')
-    // console.log(child)
-    child = document.createElement('p');
-    child.innerHTML = tweet.name + ' says ' + tweet.text + 'Refersh the page to see full tweet!';
-
-
-    document.getElementById('tweetList').appendChild(child);
+    // some logic to add the new tweet to the DOM…
+    var child = "<li><img src='https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg'><a href='/users/{{tweet.name}}''>" + tweet.name + "</a><br><a href='/users/" + tweet.name + "/tweets/" + tweet.tweetId+ "''>" + tweet.text + "</a><br></li>"
+    
+    // document.getElementById('tweetList').appendChild(child);
+    $('#tweetList').prepend(child);
 
   }); 
 </script>
